@@ -10,8 +10,11 @@
 <body>
 <header class="site">
   <div class="wrap">
-    <h1><a href="../index.html">Mario Alencar</a></h1>
-    <p class="tag">Perícia contábil, LGPD e inteligência artificial — relatos de campo</p>
+    <div class="identity">
+      <img class="profile-pic" src="../assets/perfil_mario.png" alt="Mario Alencar">
+      <h1><a href="../index.html">Mario Alencar</a></h1>
+    </div>
+    <p class="tag">Perícia contábil, LGPD e inteligência artificial — relatos de campo · Forensic accounting, LGPD and AI — field reports</p>
   </div>
 </header>
 <main>
@@ -44,21 +47,24 @@
 
   <section class="comments">
     <h2>Comentários</h2>
-    <script src="https://giscus.app/client.js"
-            data-repo="firmacon/firmacon.github.io"
-            data-repo-id="R_kgDOUHQOCw"
-            data-category="Announcements"
-            data-category-id="DIC_kwDOUHQOC84DEZmo"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="bottom"
-            data-theme="preferred_color_scheme"
-            data-lang="pt"
-            crossorigin="anonymous"
-            async>
-    </script>
+    <p class="hint">Comentários são moderados: sua mensagem chega por e-mail e é publicada depois de revisada.</p>
+    <form class="comment-form" action="https://formsubmit.co/firmacon@yahoo.com.br" method="POST">
+      <input type="hidden" name="_subject" value="Novo comentário — Sobre anonimizar dados (PT)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://firmacon.github.io/obrigado.html">
+      <input type="text" name="_honey" style="display:none">
+      <label>Nome
+        <input type="text" name="Nome" required>
+      </label>
+      <label>E-mail (opcional, só pra eu responder)
+        <input type="email" name="Email">
+      </label>
+      <label>Comentário
+        <textarea name="Comentário" required></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Enviar comentário</button>
+    </form>
   </section>
 </article>
 </main>

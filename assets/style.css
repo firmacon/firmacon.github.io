@@ -77,6 +77,17 @@ header.site h1 {
 header.site h1 a { color: var(--text); }
 header.site h1 a:hover { color: var(--accent); text-decoration: none; }
 
+.retired-tag {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (max-width: 700px) {
+  .retired-tag { display: none; }
+}
+
 header.site p.tag {
   margin: 6px 0 0;
   color: var(--text-dim);
@@ -176,6 +187,49 @@ nav.site a:hover { color: var(--accent); }
 .btn-outline { border: 1.5px solid var(--border); color: var(--text); background: var(--card-bg); }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
+/* epigraph quote */
+.quote {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 44px 24px 0;
+  text-align: center;
+}
+
+.quote-langs {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  flex: 1;
+  min-width: 240px;
+}
+
+@media (max-width: 700px) {
+  .quote-langs { flex-direction: column; gap: 24px; }
+}
+
+.quote p {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* about (bio PT/EN) */
 .about {
   max-width: var(--maxw-wide);
@@ -194,12 +248,23 @@ nav.site a:hover { color: var(--accent); }
   margin-bottom: 6px;
 }
 
+.about-langs {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.about-block { flex: 1; min-width: 280px; }
+
 .about p {
   color: var(--text-dim);
   font-size: 0.85rem;
   line-height: 1.6;
-  margin: 0 0 18px;
-  max-width: 72ch;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .about-langs { flex-direction: column; }
 }
 
 main.home { padding-top: 8px; }
@@ -382,4 +447,46 @@ footer.site .visits img { height: 20px; vertical-align: middle; }
   color: var(--accent-dark);
   font-size: 1.15rem;
   margin: 0 0 18px;
+}
+
+.comments .hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+}
+
+.comment-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.comment-form input,
+.comment-form textarea {
+  font-family: inherit;
+  font-size: 0.92rem;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.comment-form textarea { resize: vertical; min-height: 110px; }
+
+.comment-form button {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
