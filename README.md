@@ -53,9 +53,12 @@ blog_firmacon/
 
 ## Pra publicar o próximo artigo
 
-1. Copie um dos arquivos de `posts/` como modelo.
-2. Troque título, subtítulo, texto e capa.
-3. Adicione um novo `.post-card` em `index.html` apontando pro novo arquivo.
-4. `git add . && git commit -m "Novo artigo" && git push`
+1. Copie um dos arquivos de `posts/` como modelo (título, subtítulo, texto e capa em PT
+   e em EN — mantendo o toggle PT/EN no topo do artigo).
+2. Em `index.html`, adicione **dois** `.post-card` novos (um logo abaixo do outro): o
+   primeiro com classe `lang-first` (versão em português), o segundo com classe
+   `lang-second` (versão em inglês) — sem botões de idioma, as duas versões aparecem
+   uma na sequência da outra direto na lista.
+3. `git add . && git commit -m "Novo artigo" && git push`
 
 Sem build, sem Jekyll, sem dependência — só HTML e CSS puro, editável em qualquer editor de texto.
