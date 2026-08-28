@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Anonymization Fails: 3 Famous Cases Every Business Leader Should Know</title>
+<meta name="description" content="Removing names is an illusion. Here is how real-world linkage attacks completely broke weak data privacy models.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <h1><a href="../index.html">Mario Alencar</a></h1>
+    <p class="tag">Forensic accounting, data protection law, and AI — field reports</p>
+  </div>
+</header>
+<main>
+<article class="post">
+  <div class="lang-switch">
+    <a href="ilusoes-anonimizacao-2-pt.html">PT</a>
+    <a href="illusions-anonymization-2-en.html" class="current">EN</a>
+  </div>
+  <img class="cover" src="../assets/capa2_en.png" alt="Article cover — Who's Guilty?">
+  <h1>Data Anonymization Fails: 3 Famous Cases Every Business Leader Should Know</h1>
+  <p class="subtitle">Removing names is an illusion. Here is how real-world linkage attacks completely broke weak data privacy models — inside companies with entire security teams.</p>
+
+  <p>In the first piece of this series I argued something that sounds odd if you come from law or accounting: anonymization isn't a property of the data. It's a relationship between the data and whoever is reading it. A file can be anonymous to me and completely identifiable to you, depending on what you already knew before you opened it.</p>
+
+  <p>Today I want to prove that with real cases — not classroom hypotheticals, but three times large companies, with legal and security teams on payroll, stripped out the name, the ID number, the tax ID, and assumed that was enough. It wasn't. In all three, someone outside cross-referenced the "clean" dataset with a second public source and reconstructed people's identities — sometimes in minutes, with a calculator and $20.</p>
+
+  <h2>Case 1 — Netflix, 2006/2008: the correlation attack</h2>
+  <p>In 2006, Netflix launched a public recommendation-algorithm contest and released a dataset with 100 million movie ratings from roughly half a million subscribers. Names had been replaced with random numeric IDs — by the standards of the time, that was "anonymized." Two researchers, Arvind Narayanan and Vitaly Shmatikov, published a study in 2008 showing the opposite. They took public ratings from IMDb — where plenty of people use their real names — and cross-referenced them against the rating history and dates in the Netflix dataset. The logic is simple: very few people rate the exact same movies, on roughly the same dates, with the same scores. That pattern is a fingerprint. A small overlap of shared movies was enough to reconstruct a user's entire row — including ratings they had never made public, some of which revealed political leanings or sexual orientation they clearly hadn't chosen to disclose. Netflix cancelled the second edition of the contest after this.</p>
+  <p><strong>The forensic lesson:</strong> data is never isolated. Breaking an anonymization scheme doesn't require hacking anything — just a second public dataset that shares some behavioral column with yours. In a forensic engagement, "I removed the direct identifiers" isn't a defense on its own; the real question is what other datasets, public or not, could be linked against that file.</p>
+
+  <h2>Case 2 — The Governor of Massachusetts, 1997: the myth of "just demographics"</h2>
+  <p>This is the case I most enjoy telling, because it didn't need a hacker or a single line of sophisticated code — just a researcher, a trip to the voter registration office, and $20. A Massachusetts health insurance agency released, for research purposes, the medical records of state employees and their families. Names and ID numbers had been removed; what remained was ZIP code, date of birth, and sex — fields that seemed too harmless to identify anyone. Latanya Sweeney, then a researcher at MIT, bought the city of Cambridge's public voter rolls for $20 — a list that had exactly ZIP code, date of birth, sex, and, crucially, name. Cross-referencing the two datasets, she found that only six people in Cambridge shared the birth date of then-Governor William Weld; of those six, only three were men; and of those three, only one lived in his ZIP code. She pulled up the Governor's complete medical record and mailed it to his office as proof. Sweeney's work produced the most-cited estimate in the privacy literature: roughly 87% of the U.S. population can be uniquely identified by cross-referencing just three fields — ZIP code, date of birth, and sex. That's not an exotic number; it's the exact order of magnitude that any HR system, health plan, or satisfaction survey collects without a second thought.</p>
+  <p><strong>The forensic lesson:</strong> three "purely demographic" fields — none of them an ID document — are already enough to re-identify almost anyone. When a client tells me "I removed the sensitive data, all that's left is age, gender, and location," that sentence is precisely the alarm the Weld case taught me never to let slide.</p>
+
+  <h2>Case 3 — The Twitter/X API, 2021–2023: masking isn't anonymizing</h2>
+  <p>The first two cases are from 1997 and 2008 — easy to assume that's ancient history, that tech companies learned the lesson by now. The third case shows they hadn't. Between June 2021 and January 2022, a flaw in Twitter's API let anyone submit an email address or phone number and get back whether that contact was linked to an account — even when the user had explicitly enabled the privacy setting meant to prevent exactly that. This wasn't a classic database leak; it was a door that let the system answer "yes, this contact exists here" for any list someone wanted to test at scale. All it took was generating millions of email/phone combinations and running them against the API. The flaw was patched in January 2022, but the data had already been harvested: a first batch of 5.4 million accounts surfaced for sale in July 2022, and in January 2023 a dataset of more than 200 million accounts was published on a hacking forum — for under two dollars.</p>
+  <p><strong>The forensic lesson:</strong> the structure behind the mask matters as much as the mask itself. If your client hands you a list of products, transactions, or customers with the headers "hidden," but the underlying system — spreadsheet, API, database — still lets someone test hypotheses at scale ("is this tax ID in here?", "which row matches this amount?") — the anonymization is void in practice, even if it looks solid on paper.</p>
+
+  <h2>What actually changes in practice</h2>
+  <p>All three cases share the same skeleton: a "clean" dataset + a second source (public, purchased, or simply brute-forced) = a reconstructed identity. That's exactly the core problem I described in the first piece: anonymization doesn't survive a second source the recipient already had, or can get their hands on. That's why serious data governance doesn't stop at "I removed the obvious columns." Two more robust ideas are gaining ground: differential privacy, which adds controlled mathematical noise to data before release — in a way that aggregate statistics stay valid while no individual row can be reconstructed with certainty — and the strict deterministic architecture I described in the first article: a lookup table that never leaves your machine, and that only whoever maintains it can reverse. Neither promises 100% — as I said before, that promise doesn't exist — but both start from a question the three fiascos above make clear you have to ask every single time: <strong>who is going to receive this file, and what else do they already know, or could find out, that I don't control?</strong></p>
+
+  <p class="disclosure">Disclosure: I'm a Brazilian forensic/court-appointed accountant (perito contábil), not a developer or a lawyer. This piece — and the series — records personal, experimental reflections, tested in practice rather than settled by statute or case law. It may contain errors, get revised, or simply be wrong in the next installment. It isn't professional or legal advice for your specific situation; it's an invitation to argue with a colleague thinking through the same problem in real time.</p>
+
+  <a class="back-link" href="../index.html">&larr; Back to all articles</a>
+</article>
+</main>
+<footer class="site">
+  Mario Alencar · Forensic, Accounting &amp; Financial Expertise · CRC/AM Active
+</footer>
+</body>
+</html>

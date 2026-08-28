@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As ilusões da anonimização — 3 vezes em que grandes empresas acharam que os dados estavam salvos</title>
+<meta name="description" content="Tirar o nome não é anonimizar. Veja como ataques de correlação reais destroem modelos fracos de privacidade.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <h1><a href="../index.html">Mario Alencar</a></h1>
+    <p class="tag">Perícia contábil, LGPD e inteligência artificial — relatos de campo</p>
+  </div>
+</header>
+<main>
+<article class="post">
+  <div class="lang-switch">
+    <a href="ilusoes-anonimizacao-2-pt.html" class="current">PT</a>
+    <a href="illusions-anonymization-2-en.html">EN</a>
+  </div>
+  <img class="cover" src="../assets/capa2_pt.png" alt="Capa do artigo — Quem é o culpado?">
+  <h1>As ilusões da anonimização — 3 vezes em que grandes empresas acharam que os dados estavam salvos (e falharam feio)</h1>
+  <p class="subtitle">Tirar o nome não é anonimizar. Veja como ataques de correlação reais destroem modelos fracos de privacidade — mesmo em empresas com times inteiros de segurança.</p>
+
+  <p>No primeiro texto desta série eu defendi uma ideia que soou estranha pra quem vem do direito ou da contabilidade: anonimização não é uma propriedade do dado, é uma relação entre o dado e quem está lendo. Um arquivo pode ser anônimo pra mim e completamente identificável pra você, dependendo do que você já sabia antes de abrir o arquivo.</p>
+
+  <p>Hoje eu quero provar isso com casos reais — não hipóteses de sala de aula, mas três vezes em que empresas grandes, com equipes jurídicas e de segurança, tiraram nome, CPF, CNPJ (ou o equivalente de cada país) de uma base e acharam que aquilo bastava. Não bastou. Nos três casos, alguém de fora cruzou a base "limpa" com uma segunda fonte pública e reconstruiu a identidade das pessoas — às vezes em minutos, com uma calculadora e US$ 20.</p>
+
+  <h2>Caso 1 — Netflix, 2006/2008: o ataque de correlação</h2>
+  <p>Em 2006 a Netflix lançou um concurso público de algoritmo de recomendação e liberou uma base com 100 milhões de avaliações de filmes de quase meio milhão de assinantes. Os nomes tinham sido trocados por IDs numéricos aleatórios — pelo padrão da época, aquilo era "anonimizado". Dois pesquisadores, Arvind Narayanan e Vitaly Shmatikov, publicaram em 2008 um estudo mostrando o oposto. Eles pegaram avaliações públicas do IMDb — onde muita gente usa o próprio nome — e cruzaram com o histórico de notas e datas da base da Netflix. A lógica é simples: poucas pessoas avaliam exatamente os mesmos filmes, nas mesmas datas aproximadas, com as mesmas notas. Esse padrão é uma impressão digital. Bastou uma pequena amostra de filmes em comum pra reconstruir a linha inteira de um usuário — inclusive avaliações que ele nunca tinha tornado públicas, e que revelavam preferências políticas ou orientação sexual que ele claramente não queria expor. A Netflix cancelou a segunda edição do concurso depois disso.</p>
+  <p><strong>A lição forense:</strong> o dado nunca está isolado. Quem quer quebrar uma anonimização não precisa invadir nada — só precisa de uma segunda base pública que compartilhe alguma coluna de comportamento com a sua. Numa perícia, isso significa que "removi os identificadores diretos" não é uma defesa; é preciso perguntar que outras bases, públicas ou não, poderiam ser cruzadas com aquele arquivo.</p>
+
+  <h2>Caso 2 — O governador de Massachusetts, 1997: o mito dos dados demográficos</h2>
+  <p>Este é o caso que mais gosto de contar porque não precisou de nenhum hacker, nenhuma linha de código sofisticada — só uma pesquisadora, uma ida ao cartório eleitoral e US$ 20. Um órgão de saúde de Massachusetts liberou, para fins de pesquisa, o histórico médico de funcionários públicos e suas famílias. Nome e documento tinham sido removidos; sobraram CEP, data de nascimento e sexo — dados que pareciam inofensivos demais pra identificar alguém. Latanya Sweeney, então pesquisadora do MIT, comprou por US$ 20 o registro público de eleitores da cidade de Cambridge, que trazia justamente CEP, data de nascimento, sexo e — esse era o ponto — nome. Cruzando as duas bases, ela descobriu que só seis pessoas em Cambridge compartilhavam a data de nascimento do governador William Weld; dessas seis, só três eram homens; e daqueles três, só um morava no CEP dele. Ela achou o prontuário médico completo do governador e mandou por correio para o escritório dele, como prova. O trabalho de Sweeney virou a estimativa mais citada da literatura de privacidade: cerca de 87% da população americana pode ser identificada de forma única cruzando apenas três campos — CEP, data de nascimento e sexo. Não é um número exótico; é da ordem de grandeza que qualquer cadastro de RH, plano de saúde ou pesquisa de satisfação costuma coletar sem pensar duas vezes.</p>
+  <p><strong>A lição forense:</strong> três campos "só demográficos" — nenhum deles um documento — já são suficientes pra reidentificar quase qualquer pessoa. Quando um cliente me diz "tirei os dados sensíveis, só ficaram idade, gênero e localização", essa frase é exatamente o alerta que o caso Weld me ensinou a não deixar passar.</p>
+
+  <h2>Caso 3 — A API do Twitter/X, 2021–2023: mascarar não é anonimizar</h2>
+  <p>Os dois primeiros casos são de 1997 e 2008 — dá pra achar que é história antiga, que hoje as empresas de tecnologia já aprenderam a lição. O terceiro caso mostra que não. Entre junho de 2021 e janeiro de 2022, uma falha na API do Twitter permitia que qualquer pessoa enviasse um e-mail ou telefone e recebesse de volta se aquele contato estava associado a uma conta — mesmo quando o usuário tinha marcado a opção de privacidade pra impedir exatamente isso. Não era um vazamento de banco de dados no sentido clássico; era uma porta que deixava o sistema responder "sim, esse contato existe aqui" pra qualquer lista que alguém quisesse testar em massa. Bastava gerar milhões de combinações de e-mail e rodar contra a API. A falha foi corrigida em janeiro de 2022, mas os dados já tinham sido coletados: um primeiro lote com 5,4 milhões de contas apareceu à venda em julho de 2022, e em janeiro de 2023 uma base com mais de 200 milhões de contas foi publicada em um fórum — por menos de dois dólares.</p>
+  <p><strong>A lição forense:</strong> a estrutura por trás da máscara importa tanto quanto a máscara. Se o seu cliente te entrega uma lista de produtos, transações ou clientes com os cabeçalhos "escondidos", mas o sistema (planilha, API, banco de dados) ainda permite testar hipóteses em massa — "esse CNPJ está aqui?", "esse valor bate com qual linha?" — a anonimização é nula na prática, mesmo que pareça sólida no papel.</p>
+
+  <h2>O que muda na prática</h2>
+  <p>Os três casos têm o mesmo esqueleto: uma base "limpa" + uma segunda fonte (pública, comprada ou simplesmente testada por força bruta) = identidade reconstruída. Isso é exatamente o que eu descrevi no primeiro texto como o problema central: anonimização não sobrevive a uma segunda fonte que o destinatário já tinha, ou que ele consegue arranjar. É por isso que a governança de dados séria não para em "removi as colunas óbvias". Duas ideias mais robustas vêm ganhando espaço: a privacidade diferencial, que adiciona ruído matemático controlado aos dados antes de liberá-los — de um jeito que estatísticas agregadas continuam válidas, mas nenhuma linha individual pode ser reconstruída com certeza —, e a arquitetura determinística estrita que descrevi no primeiro artigo: uma tabela de correspondência que nunca sai da sua máquina, e que só quem a mantém pode desfazer o apelido. Nenhuma das duas promete 100% — como eu já disse antes, essa promessa não existe —, mas as duas partem de uma pergunta que os três fiascos acima deixam claro que precisa ser feita sempre: <strong>quem vai receber este arquivo, e o que mais essa pessoa já sabe, ou pode descobrir, que eu não controlo?</strong></p>
+
+  <p class="disclosure">Aviso: sou perito contábil/judicial brasileiro, não desenvolvedor nem advogado. Este texto — e a série — registra reflexões pessoais e experimentais, testadas na prática, não pacificadas por lei ou jurisprudência. Pode conter erros, ser revisado, ou simplesmente estar errado no próximo capítulo. Não é aconselhamento profissional ou jurídico para o seu caso específico; é um convite para discutir com um colega pensando no mesmo problema em tempo real.</p>
+
+  <a class="back-link" href="../index.html">&larr; Voltar para todos os artigos</a>
+</article>
+</main>
+<footer class="site">
+  Mario Alencar · Perícias Trabalhistas, Contábeis e Financeiras · CRC/AM Ativo
+</footer>
+</body>
+</html>

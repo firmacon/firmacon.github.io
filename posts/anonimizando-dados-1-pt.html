@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre anonimizar dados — sem me esconder atrás de nenhuma lei</title>
+<meta name="description" content="Anonimização não é uma propriedade do dado. É uma relação entre o dado e quem está lendo.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <h1><a href="../index.html">Mario Alencar</a></h1>
+    <p class="tag">Perícia contábil, LGPD e inteligência artificial — relatos de campo</p>
+  </div>
+</header>
+<main>
+<article class="post">
+  <div class="lang-switch">
+    <a href="anonimizando-dados-1-pt.html" class="current">PT</a>
+    <a href="anonymizing-data-1-en.html">EN</a>
+  </div>
+  <img class="cover" src="../assets/capa1.png" alt="Capa do artigo">
+  <h1>Sobre anonimizar dados — sem me esconder atrás de nenhuma lei</h1>
+  <p class="subtitle">O primeiro capítulo de uma série sobre perícia contábil, LGPD e inteligência artificial.</p>
+
+  <p>Existe uma pergunta que nenhum contador aprendeu a responder na faculdade, porque ela não existia: se um cliente te manda uma listagem de 5.000 produtos pra classificar, e você precisa de apoio de inteligência artificial pra dar conta do volume, como você garante o sigilo de quem te contratou?</p>
+
+  <p>A resposta que a maioria dá é uma frase pronta: "eu anonimizo os dados." Depois de meses tentando furar essa frase de todos os ângulos possíveis, cheguei a uma conclusão que ninguém me disse antes: anonimização não é uma propriedade do dado. É uma relação entre o dado e quem está lendo.</p>
+
+  <p>Um exemplo resolve isso melhor que qualquer definição jurídica. Pegue uma listagem de peças de moto, sem logo, sem cabeçalho, sem nome de empresa em lugar nenhum do arquivo. Ela pode ter vindo de uma fabricante, de uma revendedora, de uma oficina mecânica ou de uma transportadora de peças usadas. Tirando as marcas, quem recebe esse arquivo — eu, uma IA, outro escritório — não tem nenhum jeito de saber qual das quatro é a origem. Do ponto de vista de quem processa, aquilo está genuinamente anonimizado. E aqui mora a primeira lição que a faculdade não ensina: o mesmo arquivo, na mesma hora, pode estar anonimizado para um destinatário e completamente identificável para outro — se esse outro já sabia, por qualquer canal, de quem era a listagem antes de abrir o arquivo. Anonimização não sobrevive a uma conversa que já entregou o nome antes do documento chegar.</p>
+
+  <p>A segunda lição é sobre como fazer isso na prática, e essa é a que costuma surpreender quem já trabalha com dado sensível há décadas: você não pede pra uma inteligência artificial "anonimizar" uma planilha. Isso parece contraintuitivo — afinal não é pra isso que a IA serve? Não, nesse caso específico. Pedir que um modelo de linguagem troque nomes e mascare CPFs numa tabela de milhares de linhas é abrir a porta pra ele trocar a mesma pessoa por dois codinomes diferentes em pontos distintos da tabela, ou simplesmente pular uma linha sem avisar — e numa auditoria de divergência financeira, isso destrói silenciosamente o que você estava tentando provar. A anonimização de verdade é feita por um script determinístico, simples, quase artesanal: uma tabela de correspondência que troca "Fulano" por "Cliente_001" de forma consistente, linha após linha, sem exceção — e essa tabela de correspondência nunca sai do seu computador. Só o arquivo com os codinomes vai para qualquer lugar, nuvem incluída. Quem recebe o arquivo processa "Cliente_001" sem jamais ter tido a chave que devolve o nome real. Isso não é uma promessa vaga de conformidade — é uma arquitetura que você pode desenhar no papel e mostrar pra qualquer auditor.</p>
+
+  <p>E aqui chega a parte mais irônica de toda essa jornada: a inteligência artificial, que parecia ser o problema de confidencialidade, é o motivo pelo qual esse tipo de script virou indispensável — não só para perito contábil, para qualquer profissão que hoje precisa processar volume de dado sensível rápido demais para fazer na mão e rigoroso demais para confiar cegamente numa ferramenta que "entende" texto mas não garante determinismo. Antes das IAs, a gente cometia erro por cansaço e por prazo. Agora, se você não desenhar a arquitetura certa, o erro vem embrulhado em uma resposta fluente e confiante — o que é bem mais perigoso que um erro óbvio de digitação.</p>
+
+  <p>Não existe anonimização 100% garantida. Isso também aprendi, e prefiro dizer isso alto a fingir uma certeza que a matemática não me dá. O que existe é engenharia de risco bem feita, documentada, e honesta sobre onde termina — que é exatamente o oposto de esconder a IA debaixo do tapete pra parecer mais confiável.</p>
+
+  <p>Isso é o começo de uma série que pretendo publicar aqui: não uma cartilha jurídica, e sim o relato de quem precisou resolver isso na prática, sem livro nenhum de prateleira que cobrisse esse cruzamento exato entre perícia contábil, LGPD e inteligência artificial. Se você também vive nessa fronteira, os próximos capítulos são pra você.</p>
+
+  <p class="disclosure">Aviso: sou perito contábil, não desenvolvedor nem advogado, e este texto registra reflexões pessoais e experimentais — fruto de teste prático, não de norma consolidada ou jurisprudência pacificada. Pode conter erro, imprecisão, ou mudar de opinião no capítulo seguinte. Não é parecer técnico nem orientação jurídica para o seu caso concreto; é convite ao debate entre colegas que estão pensando o mesmo problema em tempo real.</p>
+
+  <a class="back-link" href="../index.html">&larr; Voltar para todos os artigos</a>
+</article>
+</main>
+<footer class="site">
+  Mario Alencar · Perícias Trabalhistas, Contábeis e Financeiras · CRC/AM Ativo
+</footer>
+</body>
+</html>
