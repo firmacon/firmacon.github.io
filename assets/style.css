@@ -22,6 +22,14 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+.banner-top {
+  width: 100%;
+  display: block;
+  max-height: 260px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+
 header.site {
   border-bottom: 1px solid var(--border);
   padding: 28px 20px;
@@ -33,6 +41,21 @@ header.site .wrap {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+header.site .identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+header.site .identity img.profile-pic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 header.site h1 {
@@ -52,6 +75,33 @@ nav.site {
   display: flex;
   gap: 16px;
   font-size: 0.9rem;
+}
+
+/* about section */
+.about {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px 20px 0;
+}
+
+.about .lang-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-soft);
+  border-radius: 20px;
+  padding: 1px 9px;
+  margin-bottom: 8px;
+}
+
+.about p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin: 0 0 22px;
+}
+
+.about + main {
+  padding-top: 8px;
 }
 
 main {
@@ -95,24 +145,19 @@ main {
   margin: 0 0 8px;
 }
 
-.post-card .langs a {
-  font-size: 0.82rem;
-  border: 1px solid var(--border);
-  padding: 2px 8px;
-  border-radius: 20px;
-  margin-right: 6px;
-  color: var(--text-dim);
-}
-
-.post-card .langs a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  text-decoration: none;
-}
-
 .post-card .date {
   color: var(--text-dim);
   font-size: 0.8rem;
+}
+
+/* PT/EN shown one after another for the same article */
+.post-card.lang-first {
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+
+.post-card.lang-second {
+  padding-top: 0;
 }
 
 /* article page */
