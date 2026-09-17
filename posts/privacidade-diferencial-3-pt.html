@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacidade diferencial não é nome de seita — é uma moeda jogada do jeito certo</title>
+<meta name="description" content="Terceiro capítulo da série: o que os termos técnicos da proteção de dados realmente significam, sem disfarce de marketing e sem enrolação acadêmica.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="identity">
+      <img class="profile-pic" src="../assets/perfil_mario.png" alt="Mario Alencar">
+      <h1><a href="../index.html">Mario Alencar</a></h1>
+    </div>
+    <p class="tag">Perícia contábil, LGPD e inteligência artificial — relatos de campo · Forensic accounting, LGPD and AI — field reports</p>
+  </div>
+</header>
+<main>
+<article class="post">
+  <div class="lang-switch">
+    <a href="privacidade-diferencial-3-pt.html" class="current">PT</a>
+    <a href="differential-privacy-3-en.html">EN</a>
+  </div>
+  <img class="cover" src="../assets/capa3_pt.png" alt="Capa: um guru com turbante cercado de símbolos astrológicos de um lado, um cadeado com IA do outro">
+  <h1>Privacidade diferencial não é nome de seita — é uma moeda jogada do jeito certo</h1>
+  <p class="subtitle">Terceiro capítulo da série: o que os termos técnicos da proteção de dados realmente significam, sem disfarce de marketing e sem enrolação acadêmica.</p>
+
+  <p>Nos dois primeiros textos desta série eu defendi duas ideias: que anonimização não é uma propriedade do dado, é uma relação entre o dado e quem está lendo; e que três fiascos reais — Netflix, o governador de Massachusetts, a API do Twitter/X — provam que "tirar nome e CPF" nunca foi suficiente. No fim do segundo texto eu citei, de passagem, duas ideias mais robustas sem explicar nenhuma delas direito: privacidade diferencial e arquitetura determinística estrita. Hoje eu pago essa dívida.</p>
+
+  <p>Confesso que na primeira vez que ouvi "privacidade diferencial" pensei que tinha entrado numa palestra de astrologia corporativa — nome grande, promessa vaga, zero explicação de como funciona de verdade. E isso é um problema editorial sério, não só meu: editor de livro técnico sabe que cada termo difícil deixado sem explicação tira uma fatia do leitor — dizem por aí que gira em torno de 10% a cada salto de complexidade que você não traduz. Então vamos direto ao osso: o que esses dois nomes significam, sem o técnico incompreensível e sem o marketing que promete mundos e fundos.</p>
+
+  <p>"Privacidade diferencial" é colocar um pouco de mentira matemática controlada nos dados, de um jeito que protege cada linha individual sem estragar a conta do grupo inteiro. O exemplo mais simples que conheço não usa nenhuma fórmula — usa uma moeda. Imagine que você pergunta a 100 funcionários de uma empresa, numa auditoria interna: "você já alterou um lançamento contábil pra fechar o balanço mais bonito?" Perguntado direto, ninguém confessa. Agora peça pra cada um jogar uma moeda escondido, sem te mostrar o resultado: se der cara, responde a verdade; se der coroa, joga de novo e responde "sim" pra cara, "não" pra coroa. Ninguém — nem o auditor, nem o chefe, nem eu — vai saber se o "sim" de uma pessoa específica veio da verdade ou do azar da moeda: a linha individual está protegida de verdade. Mas como você conhece exatamente a probabilidade da moeda (50%), dá pra calcular com precisão a porcentagem real de fraude no grupo inteiro. A estatística agregada sobrevive; a pessoa não é rastreável. Empresas como Apple e o Censo dos Estados Unidos usam essa ideia — com matemática bem mais sofisticada que uma moeda, mas o princípio é exatamente esse — há anos.</p>
+
+  <p>O segundo nome, "arquitetura determinística estrita", eu já expliquei sem esse rótulo lá no primeiro texto desta série: é o "excelzinho com a chave" — um script simples, fixo e previsível, que troca "Mário" por "Cliente_A71" sempre da mesma forma, rodando no meu computador, com a tabela de correspondência trancada numa máquina que nunca sai da minha mão. Chamar isso de "determinístico" só quer dizer que a regra não muda; chamar de "estrita" só quer dizer que ela roda isolada, sob controle total de quem a mantém. Tirando o nome difícil, é o mesmo princípio do cofre de hotel: a chave nunca sai do quarto.</p>
+
+  <p>Fui tentado a trocar esses dois nomes por versões mais "vendáveis". Vi sugestão de chamar isso de "Cofre de Identidades Local" ou "Análise Blindada" — termos que soam mais confortáveis pra quem contrata. Decidi não fazer isso. Não porque os nomes técnicos sejam bonitos — eles não são —, mas porque a série inteira é sobre honestidade técnica, e trocar um nome difícil por um nome bonito sem explicar o mecanismo por trás é o mesmo erro do "100% anonimizado" que já critiquei antes: esconder a engenharia real atrás de uma palavra que soa bem. Prefiro te dar o nome feio e a explicação clara do que o nome bonito e a caixa preta.</p>
+
+  <p>No fim das contas, os dois conceitos provam a mesma coisa que os fiascos do capítulo anterior provaram ao contrário: segurança de dado não é sorte, nem é frase de contrato — é escolha de engenharia. Uma moeda jogada do jeito certo. Uma chave que nunca sai da máquina certa. Nenhuma das duas promete 100%, como já disse antes; prometem exatamente o que a matemática consegue cumprir, nem mais, nem menos.</p>
+
+  <p class="disclosure">Aviso: sou perito contábil, não desenvolvedor nem advogado, e este texto — como toda a série — registra reflexões pessoais e experimentais, fruto de teste prático, não de norma consolidada ou jurisprudência pacificada. Pode conter erro, imprecisão, ou mudar de opinião no capítulo seguinte. Não é parecer técnico nem orientação jurídica para o seu caso concreto; é convite ao debate entre colegas que estão pensando o mesmo problema em tempo real.</p>
+
+  <a class="back-link" href="../index.html">&larr; Voltar para todos os artigos</a>
+
+  <section class="comments">
+    <h2>Comentários</h2>
+    <p class="hint">Comentários são moderados: sua mensagem chega por e-mail e é publicada depois de revisada.</p>
+    <form class="comment-form" action="https://formsubmit.co/firmacon@yahoo.com.br" method="POST">
+      <input type="hidden" name="_subject" value="Novo comentário — Privacidade diferencial (PT)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://firmacon.github.io/obrigado.html">
+      <input type="text" name="_honey" style="display:none">
+      <label>Nome
+        <input type="text" name="Nome" required>
+      </label>
+      <label>E-mail (opcional, só pra eu responder)
+        <input type="email" name="Email">
+      </label>
+      <label>Comentário
+        <textarea name="Comentário" required></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Enviar comentário</button>
+    </form>
+  </section>
+</article>
+</main>
+<footer class="site">
+  Mario Alencar · Perícias Trabalhistas, Contábeis e Financeiras · CRC/AM Ativo
+  <div class="visits">
+    <a href="https://librecounter.org/referer/show" target="_blank" rel="noopener"><img src="https://librecounter.org/counter.svg" alt="Contador de visitas LibreCounter" loading="lazy"></a>
+  </div>
+</footer>
+</body>
+</html>
